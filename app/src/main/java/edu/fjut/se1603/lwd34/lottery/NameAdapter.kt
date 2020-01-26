@@ -11,6 +11,8 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_add.view.*
 import kotlinx.android.synthetic.main.item_main.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -30,7 +32,7 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
     override fun getItemCount(): Int {
         return if (list.size > 0) {
             list.size + 1
-        } else 0
+        } else 1
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -43,12 +45,8 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val h = holder.itemView
-        if (holder.itemViewType == ITEM_TYPE && position != itemCount - 1) {
-            list[position].id = position
-            list[position].name = h.etItem.text.toString()
-
+        if (holder.itemViewType == ITEM_TYPE) {
             h.etItem.hint = "请输入第${position+1}个选项"
-          //  notifyDataSetChanged()
 
             h.ivSub.setOnClickListener {
                 list.removeAt(position)
@@ -60,6 +58,9 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
                         h.ivClear.visibility = View.GONE
                     } else {
                         h.ivClear.visibility = View.VISIBLE
+                        editInput(h , position)
+                      //  bubbleSort(list)
+                        //notifyDataSetChanged()
                     }
                 }
 
@@ -85,13 +86,33 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
             }
         } else {
             h.ivAdd.setOnClickListener {
-                list.add(InputName(list.size, ""))
+                val input = InputName()
+                input.id = list.size
+                input.name = ""
+                list.add(input)
                 notifyDataSetChanged()
             }
         }
 
     }
 
+    fun bubbleSort(list: ArrayList<InputName>) {
+        if (list.size == 0) return
+        val maxIndex = list.size - 1
+        for (n in 0 until maxIndex) {
+            for (i in 0 until maxIndex - n) {
+                if (list[i].id > list[i + 1].id) {
+                    Collections.swap(list, i, i + 1)
+                }
+            }
+        }
+    }
+
+    fun editInput(h: View, position: Int){
+        list[position].id = position
+        list[position].name = h.etItem.text.toString()
+        notifyDataSetChanged()
+    }
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
 
