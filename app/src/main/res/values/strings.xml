@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">抽奖小助手</string>
+    <string name="app_name">帮我做决定</string>
     <string name="lottery">抽奖</string>
-    <string name="input_name">请输入昵称</string>
-    <string name="begin_lottery">开始抽奖</string>
-    <string name="result">恭喜中奖的是：</string>
+    <string name="input_name">请输入第 个选项</string>
+    <string name="begin_lottery">帮我做决定</string>
+    <string name="result">神的旨意是：</string>
     <string name="confirm">确定</string>
+    <string name="write">请在下面写下选项内容，系统会自动帮您做决定</string>
+    <string name="tip">tips:目前app还有bug,需要点击开始抽奖两次后才能正常运行</string>
 </resources>

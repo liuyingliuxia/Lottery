@@ -46,6 +46,8 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
         if (holder.itemViewType == ITEM_TYPE && position != itemCount - 1) {
             list[position].id = position
             list[position].name = h.etItem.text.toString()
+
+            h.etItem.hint = "请输入第${position+1}个选项"
           //  notifyDataSetChanged()
 
             h.ivSub.setOnClickListener {
