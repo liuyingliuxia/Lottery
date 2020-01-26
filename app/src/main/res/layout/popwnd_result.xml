@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@color/color10"
+    android:layout_gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/color3"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:text="@string/result"/>
+
+    <TextView
+        android:id="@+id/tvLotteryName"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/app_name"
+        android:paddingBottom="10dp"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/color15"/>
+
+    <TextView
+        android:id="@+id/tvConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/confirm"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/mmm_r9001_s10_s07_1"
+        android:textColor="@color/color3"
+        android:padding="10dp"/>
+
+</LinearLayout>

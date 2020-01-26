@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">抽奖小助手</string>
+    <string name="lottery">抽奖</string>
+    <string name="input_name">请输入昵称</string>
+    <string name="begin_lottery">开始抽奖</string>
+    <string name="result">恭喜中奖的是：</string>
+    <string name="confirm">确定</string>
+</resources>
