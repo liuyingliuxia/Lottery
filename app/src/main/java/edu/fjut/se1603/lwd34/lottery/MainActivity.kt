@@ -76,8 +76,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                hideKeyboard(p1!!, this@MainActivity)
                 mList.clear()
-                for (i in 0..p2) { // 默认两行空数据
+                for (i in 0..p2 + 1) { // 默认两行空数据
                     val inputName = InputName()
                     inputName.name = ""
                     mList.add(inputName)

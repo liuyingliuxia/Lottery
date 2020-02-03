@@ -13,5 +13,10 @@
 - bug 带解决
 - 2020/1/29 本来只想写个小工具练练手，谁知bug太多修复起来代价太大，本项目暂时废弃 
 - 2020/2/3 再次开始完善 添加了 spinner 下拉列表 批量生成输入框
+# 截图：
+- ![结果界面](screenshot/shot1.png )  
+ 
+
+- ![批量生成输入框界面](screenshot/shot2.png ) 
 ------------------------
 # android apk 下载地址： https://fir.im/myottery
