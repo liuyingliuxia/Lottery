@@ -10,10 +10,23 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:text="@string/write"
         android:textColor="@color/color3"
-        android:textSize="16sp"
-        android:padding="10dp"/>
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvSpinnerNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/spinner_num" />
+
+    <Spinner
+        android:id="@+id/spNum"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMain"
@@ -24,9 +37,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
         android:paddingLeft="10dp"
-        android:text="@string/tip"/>
+        android:text="@string/tip"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tvBegin"

@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.litepal.LitePal
@@ -18,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mManager: LinearLayoutManager
     lateinit var result: String
     var mList: ArrayList<InputName> = arrayListOf()
+    val numArray = arrayListOf<Int>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +30,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        for (i in 2..100)
+            numArray.add(i)
+
         if (mList.isEmpty()) {
             for (i in 0..1) { // 默认两行空数据
                 val inputName = InputName()
@@ -32,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 mList.add(inputName)
             }
         }
+
         nameAdapter = NameAdapter(this, mList)
         mManager = LinearLayoutManager(this)
         mManager.orientation = LinearLayoutManager.VERTICAL
@@ -41,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         tvBegin.setOnClickListener {
             hideKeyboard(it, this)
             mList = nameAdapter.getInput()
-          //  nameAdapter.notifyDataSetChanged()
+            //  nameAdapter.notifyDataSetChanged()
 
             Log.e("------------------", mList.toString())
 
@@ -52,6 +61,29 @@ class MainActivity : AppCompatActivity() {
                 }
             })
             pop.open()
+        }
+
+
+        spNum.adapter = ArrayAdapter<Int>(this, R.layout.item_spinner, numArray)
+        spNum.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                for (i in 0..1) { // 默认两行空数据
+                    val inputName = InputName()
+                    inputName.name = ""
+                    mList.add(inputName)
+                }
+                nameAdapter.notifyDataSetChanged()
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                mList.clear()
+                for (i in 0..p2) { // 默认两行空数据
+                    val inputName = InputName()
+                    inputName.name = ""
+                    mList.add(inputName)
+                }
+                nameAdapter.notifyDataSetChanged()
+            }
         }
 
     }
