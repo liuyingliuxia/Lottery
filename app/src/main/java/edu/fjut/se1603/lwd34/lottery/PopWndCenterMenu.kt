@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 
 /**
- * 底部弹出PopWnd
+ * 中间弹出PopWnd
  */
-open class PopWndCenterMenu(contentView: View?) : AlphaTransformPopWindow(contentView!!, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true) {
+open class PopWndCenterMenu(contentView: View?) : AlphaTransformPopWindow(contentView!!, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true) {
     /**
      * 默认在Activit中间弹出
      */

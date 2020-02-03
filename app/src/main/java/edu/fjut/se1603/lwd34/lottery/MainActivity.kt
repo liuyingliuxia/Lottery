@@ -21,24 +21,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        LitePal.initialize(this)
-        LitePal.deleteAll<InputName>()
         initView()
     }
 
     private fun initView() {
-        val sqlList = LitePal.findAll<InputName>()
-        if (sqlList.isEmpty()) {
+        if (mList.isEmpty()) {
             for (i in 0..1) { // 默认两行空数据
                 val inputName = InputName()
-                inputName.id = i
                 inputName.name = ""
                 mList.add(inputName)
-            }
-        } else {
-            //mList.clear()
-            for (i in sqlList.indices) {
-                mList.add(sqlList[i])
             }
         }
         nameAdapter = NameAdapter(this, mList)
@@ -49,12 +40,13 @@ class MainActivity : AppCompatActivity() {
 
         tvBegin.setOnClickListener {
             hideKeyboard(it, this)
-
-            val random = (0 until mList.size).random() // 产生随机结果
-            result = mList[random].name
+            mList = nameAdapter.getInput()
+          //  nameAdapter.notifyDataSetChanged()
 
             Log.e("------------------", mList.toString())
 
+            val random = (0 until mList.size).random() // 产生随机结果
+            result = mList[random].name
             val pop = PopWndResult.create(result, this, object : PopWndResult.CallBack {
                 override fun onClickItem(type: Int) {
                 }
@@ -63,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
     //强制隐藏软键盘
     private fun hideKeyboard(view: View, myActivity: Activity) {

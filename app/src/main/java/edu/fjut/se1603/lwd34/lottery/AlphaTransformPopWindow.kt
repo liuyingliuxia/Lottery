@@ -23,7 +23,7 @@ abstract class AlphaTransformPopWindow(contentView: View, width: Int, height: In
     var isBackgroundTrans = true
 
     fun showAtLocation(parent: View) {
-        showAtLocation(parent, Gravity.BOTTOM, 0, 0)
+        showAtLocation(parent, Gravity.CENTER, 0, 0)
     }
 
     override fun showAtLocation(parent: View, gravity: Int, x: Int, y: Int) {

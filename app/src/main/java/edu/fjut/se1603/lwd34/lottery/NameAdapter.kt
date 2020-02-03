@@ -49,6 +49,7 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
                 list.removeAt(position)
                 notifyDataSetChanged()
             }
+
             //通过tag判断当前editText是否已经设置监听，有监听的话，移除监听再给editText赋值
             if (h.etItem.tag is TextWatcher) {
                 h.etItem.removeTextChangedListener(h.etItem.tag as TextWatcher)
@@ -59,7 +60,7 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
                         h.ivClear.visibility = View.GONE
                     } else {
                         h.ivClear.visibility = View.VISIBLE
-                        editInput(h, position)
+                        list[position].name = h.etItem.text.toString()
                     }
                 }
 
@@ -68,7 +69,6 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
                         h.ivClear.visibility = View.GONE
                     } else {
                         h.ivClear.visibility = View.VISIBLE
-                        //editInput(h , position)
                     }
                 }
 
@@ -77,7 +77,7 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
                         h.ivClear.visibility = View.GONE
                     } else {
                         h.ivClear.visibility = View.VISIBLE
-                        // editInput(h , position)
+
                     }
                 }
 
@@ -87,11 +87,12 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
 
             h.ivClear.setOnClickListener {
                 h.etItem.setText("")
+                list[position].name = ""
             }
         } else {
             h.ivAdd.setOnClickListener {
+                //应该是 在末尾添加 而不是开头
                 val input = InputName()
-                input.id = list.size
                 input.name = ""
                 list.add(input)
                 notifyDataSetChanged()
@@ -100,12 +101,8 @@ class NameAdapter(var context: Context, var list: ArrayList<InputName>) :
 
     }
 
-    fun editInput(h: View, position: Int) {
-        val input = InputName()
-        input.id = position
-        input.name = h.etItem.text.toString()
-        input.save()
-        //notifyDataSetChanged()
+    fun getInput(): ArrayList<InputName> {
+        return list
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)

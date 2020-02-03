@@ -6,7 +6,7 @@ buildscript {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
-        
+        maven { url 'http://218.106.157.184:8081/repository/mmm-android'}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
